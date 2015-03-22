@@ -40,6 +40,9 @@ For further information read the Code Book.
 In the directory will you also find the text file ("tidy_data.txt") generated at the end of the R script.
 
 
+Any improved suggestions for my script are highly appreciated!
+
+
 
 
 

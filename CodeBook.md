@@ -54,7 +54,7 @@ Additional vectors obtained by averaging the signals in a signal window sample. 
 
 Note: features are normalized and bounded within [-1,1].
 
-# Describition of variables and transformations to clean up the data
+# Describtion of variables and transformations to clean up the data
 The features (in total 561) are unlabeled and can be found in the "x_test.txt" and "x_train.text" files respectively. The features names (column names) are stored in the file "features.text". The activity labels are in the "y_test.txt" and "y_train.txt" files. The test subjects (volunteers) are in the "subject_test.txt" and "subject_train.txt" files.
 
 ## Step 1: Merges the training and the test sets to create one data set.

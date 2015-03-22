@@ -63,14 +63,14 @@ finalData <- rbind(trainData, testData)
 ###############################################################################################
 
 ## Save only the column names with mean() or std() in it
-meanstd<-features$V2[grep("mean\\(\\)|std\\(\\)", features$V2)]
+meanstd <- features$V2[grep("mean\\(\\)|std\\(\\)", features$V2)]
 
 ## Save the column names for all columns also 
 ## considering the columns "NumbActivity" and "IDSubject"
-columnNames<-c("NumbActivity", "IDSubject", as.character(meanstd))
+columnNames <- c("NumbActivity", "IDSubject", as.character(meanstd))
 
 ## Subset the finalData frame with the respective column names above
-finalData<-subset(finalData,select=columnNames)
+finalData <- subset(finalData,select=columnNames)
 
 #############Step 2 finished#############
 
@@ -90,18 +90,18 @@ finalData <- merge(activitylabels, finalData, by="NumbActivity", sort=FALSE, all
 ###############################################################################################
 
 ## Rewrite the column names: writing out the abbreviation
-names(finalData)<-gsub("^t", "time", names(finalData))
-names(finalData)<-gsub("^f", "freq", names(finalData))
-names(finalData)<-gsub("Acc", "Accelerometer", names(finalData))
-names(finalData)<-gsub("Gyro", "Gyroscope", names(finalData))
-names(finalData)<-gsub("Mag", "Magnitude", names(finalData))
-names(finalData)<-gsub("\\()","", names(finalData))
+names(finalData) <- gsub("^t", "time", names(finalData))
+names(finalData) <- gsub("^f", "freq", names(finalData))
+names(finalData) <- gsub("Acc", "Accelerometer", names(finalData))
+names(finalData) <- gsub("Gyro", "Gyroscope", names(finalData))
+names(finalData) <- gsub("Mag", "Magnitude", names(finalData))
+names(finalData) <- gsub("\\()","", names(finalData))
 
 #### Possibilities if column name is still subjectively too long
-names(finalData)<-gsub(gsub("AccMag","AccMagnitude", names(finalData))
-names(finalData)<-gsub(gsub("AccJerkMag","AccJerkMagnitude", names(finalData))
-names(finalData)<-gsub("GyroMag","GyroMagnitude", names(finalData))
-names(finalData)<-gsub("GyroJerkMag","GyroJerkMagnitude", names(finalData))
+names(finalData) <- gsub(gsub("AccMag","AccMagnitude", names(finalData))
+names(finalData) <- gsub(gsub("AccJerkMag","AccJerkMagnitude", names(finalData))
+names(finalData) <- gsub("GyroMag","GyroMagnitude", names(finalData))
+names(finalData) <- gsub("GyroJerkMag","GyroJerkMagnitude", names(finalData))
 ####
 
 #############Step 4 finished#############
@@ -115,7 +115,7 @@ names(finalData)<-gsub("GyroJerkMag","GyroJerkMagnitude", names(finalData))
 ## Create a tidy data set with mean for every NumbActivity for each IDSubject 
 tidyData <- aggregate(finalData, by=list(NumbActivity = finalData$NumbActivity, IDSubject=finalData$IDSubject), mean)
 
-## Perform the following command threew times in order to delete the unecessary columns 
+## Perform the following command three times in order to delete the unecessary columns 
 tidyData[,3] = NULL
 
 ## Write the tidy data set as a textfile in the working directory
